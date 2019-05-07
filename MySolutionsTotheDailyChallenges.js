@@ -40,7 +40,7 @@ function countModules(){
 
 function countEssential(){
   var count =0;
-  var size = availableModules.length;
+  var size = countModules();
   for(var i = 0; i < size; i++){
     if(availableModules[i].essential){
       count++;
@@ -60,16 +60,13 @@ function findModuleIndex(inp){
   return index;
 }
 
+function loadModule(index){
+  availableModules[index].enabled = true;
+  ship.modules.push(availableModules[index]);
+}
 loadModule(findModuleIndex("life-support"));
 loadModule(findModuleIndex("propulsion"));
 loadModule(findModuleIndex("navigation"));
-
-function loadModule(index){
-  
-  availableModules[index].enabled = true;
-  ship.modules.push(availableModules[index]);
-  
-}
 
 function resetLARRY(){
   for(var i= 0; i < 10; i++){
