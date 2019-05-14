@@ -75,3 +75,58 @@ function resetLARRY(){
 }
 resetLARRY();
 
+function setMessage(){
+  radio.message = JSON.stringify(navigation);
+  return radio.message;
+}
+setMessage();
+
+function activateBeacon(){
+  radio.beacon = true;
+}
+activateBeacon();
+
+function setFrequency(){
+  radio.frequency = (radio.range.low + radio.range.high)/2;
+ // return frequency;
+}
+
+function initialize(){
+  navigation.x = 0;
+  navigation.y = 0;
+  navigation.z = 0; 
+}
+
+function calibrateX(){
+  var signal = 0;
+  for(var i =1; i <= 12; i++){
+    signal = checkSignal();
+    //console.log(checkSignal());
+    if(signal !== undefined) { 
+      navigation.x = signal;
+      break;
+    }
+  }
+}
+
+function calibrateY(){
+  var signal = 0;
+  for(var i = 1; i <= 60; i++){
+    signal = checkSignal();
+    if(signal !== undefined){
+      navigation.y = signal;
+      break;
+    }
+  }
+}
+
+function calibrateZ(){
+  var signal = 0;
+  for(var i =1; i <= 60; i++){
+    signal = checkSignal();
+    if(signal !== undefined){
+      navigation.z = signal;
+      break;
+    }
+  }
+}
