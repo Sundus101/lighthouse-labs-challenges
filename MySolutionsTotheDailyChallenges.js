@@ -130,3 +130,16 @@ function calibrateZ(){
     }
   }
 }
+
+function calibrate(){
+  calibrateX();
+  calibrateY();
+  calibrateZ();
+}
+
+function setSpeed(s){
+  var sp = parseInt(s,10);
+  if (Math.sign(sp) === 1 || Math.sign(sp) === 0){
+    navigation.speed = sp;
+  }
+}
