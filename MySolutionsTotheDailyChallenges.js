@@ -68,6 +68,9 @@ loadModule(findModuleIndex("life-support"));
 loadModule(findModuleIndex("propulsion"));
 loadModule(findModuleIndex("navigation"));
 
+/*I thought it might get confusing as to where did LARRY.quack() come from, so thought I should explain this.
+In this problem, LARRY (my robotic assisstant on the spaceship) starts to malfunction. Our task was to fix him by 
+calling the built-in function, "LARRY.quack()" 10 times.*/
 function resetLARRY(){
   for(var i= 0; i < 10; i++){
     LARRY.quack();
