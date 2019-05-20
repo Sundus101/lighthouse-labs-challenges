@@ -88,7 +88,6 @@ activateBeacon();
 
 function setFrequency(){
   radio.frequency = (radio.range.low + radio.range.high)/2;
- // return frequency;
 }
 
 function initialize(){
@@ -142,4 +141,33 @@ function setSpeed(s){
   if (Math.sign(sp) === 1 || Math.sign(sp) === 0){
     navigation.speed = sp;
   }
+}
+
+function activateAntenna(){
+  var s = ship.antenna.active = true;
+  return s;
+}
+
+function sendBroadcast(){
+  for(var i=1; i <= 100; i++){
+    broadcast();
+  }
+}
+
+function configureBroadcast(){
+  setFrequency();
+  activateAntenna();
+  sendBroadcast();
+}
+configureBroadcast();
+//was given a sample message which replaced vowels and one consonant, we had to determine which number corresponds to which letter
+//and then write this function accordingly
+function decodeMessage(message){
+  var msg = message.replace(/0/g,'o')
+     .replace(/1/g,'i')
+     .replace(/2/g,'u')
+     .replace(/3/g,'e')
+     .replace(/4/g,'a')
+     .replace(/5/g,'y');
+  return msg;
 }
